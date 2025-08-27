@@ -1,0 +1,13 @@
+version: '3.8'
+
+services:
+  gusatlas:
+    build: .
+    ports:
+      - "3000:3000"
+    volumes:
+      # 持久化 BLAST 数据库
+      - ./program/blast/references:/app/program/blast/references
+    restart: unless-stopped
+    environment:
+      - NODE_ENV=production
